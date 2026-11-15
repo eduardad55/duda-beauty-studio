@@ -71,7 +71,7 @@
 </head>
 <body class="bg-brand-bg text-gray-100 font-sans min-h-screen antialiased selection:bg-brand-pink selection:text-black">
 
-    <!-- Container Principal (Mobile First Limitado no Desktop como App do Insta) -->
+    <!-- Container Principal -->
     <div class="max-w-md md:max-w-4xl mx-auto border-x border-brand-border/40 min-h-screen pb-24 shadow-2xl relative">
         
         <!-- Top Bar Navigation Header -->
@@ -218,7 +218,7 @@
             </div>
         </section>
 
-        <!-- Navigation Tabs (Feed / Agendamento / Serviços / Área do Cliente) -->
+        <!-- Navigation Tabs -->
         <nav class="flex border-b border-brand-border bg-brand-bg sticky top-[57px] z-30">
             <button id="tab-btn-feed" onclick="switchTab('feed')" class="flex-1 py-3 text-center text-sm font-medium border-b-2 active-tab transition-colors flex items-center justify-center gap-1.5">
                 <i class="fa-solid fa-border-all"></i>
@@ -240,10 +240,10 @@
 
         <!-- MAIN CONTENT SECTIONS -->
 
-        <!-- 1. FEED GALLERY SECTION (INSTAGRAM STYLE GRID) -->
+        <!-- 1. FEED GALLERY SECTION -->
         <section id="sec-feed" class="p-1 md:p-3">
             <div class="grid grid-cols-3 gap-1 md:gap-2" id="gallery-grid">
-                <!-- Items populated by JS -->
+                <!-- Populated by JS -->
             </div>
         </section>
 
@@ -261,16 +261,16 @@
             </div>
         </section>
 
-        <!-- 3. INTERACTIVE BOOKING STEP-BY-STEP SYSTEM -->
+        <!-- 3. INTERACTIVE BOOKING STEP-BY-STEP SYSTEM (SEM HORÁRIOS, DIRETO AO WHATSAPP) -->
         <section id="sec-booking" class="hidden p-4 space-y-6">
             <!-- Progress Header -->
             <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
                 <div class="flex justify-between items-center mb-2">
-                    <span id="step-indicator" class="text-xs font-bold text-brand-pink uppercase tracking-wider">Passo 1 de 4</span>
+                    <span id="step-indicator" class="text-xs font-bold text-brand-pink uppercase tracking-wider">Passo 1 de 3</span>
                     <span id="step-title" class="text-xs text-gray-400">Escolha os Serviços</span>
                 </div>
                 <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                    <div id="step-bar" class="bg-gradient-to-r from-brand-pink to-brand-pinkDark h-full w-1/4 transition-all duration-300"></div>
+                    <div id="step-bar" class="bg-gradient-to-r from-brand-pink to-brand-pinkDark h-full w-1/3 transition-all duration-300"></div>
                 </div>
             </div>
 
@@ -284,41 +284,14 @@
                     <!-- Dynamic checkable list -->
                 </div>
                 <button onclick="goToStep(2)" id="btn-to-step2" disabled class="w-full bg-brand-pink text-brand-bg font-bold py-3 rounded-xl opacity-50 cursor-not-allowed transition-all flex items-center justify-center gap-2">
-                    Continuar para Data & Horário <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <!-- STEP 2: Select Date & Slot -->
-            <div id="booking-step-2" class="hidden space-y-4">
-                <button onclick="goToStep(1)" class="text-xs text-brand-pink flex items-center gap-1 hover:underline">
-                    <i class="fa-solid fa-arrow-left"></i> Voltar para serviços
-                </button>
-
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-regular fa-calendar text-brand-pink"></i>
-                    Selecione o dia do atendimento:
-                </h3>
-                <p class="text-xs text-gray-400">Atendimentos de Quarta a Sexta (08h às 18h) e Sábado (07h às 16h).</p>
-
-                <!-- Date Selector Input -->
-                <input type="date" id="booking-date" onchange="onDateChange()" class="w-full bg-brand-card border border-brand-border text-white rounded-xl p-3 text-sm focus:outline-none focus:border-brand-pink">
-
-                <div id="slots-container" class="space-y-2 pt-2">
-                    <h4 class="text-xs font-semibold text-gray-300">Horários disponíveis para este dia:</h4>
-                    <div id="slots-grid" class="grid grid-cols-3 gap-2">
-                        <p class="text-xs text-gray-500 col-span-3 py-4 text-center">Selecione uma data válida para ver os horários livre.</p>
-                    </div>
-                </div>
-
-                <button onclick="goToStep(3)" id="btn-to-step3" disabled class="w-full bg-brand-pink text-brand-bg font-bold py-3 rounded-xl opacity-50 cursor-not-allowed transition-all flex items-center justify-center gap-2">
                     Continuar para Dados Pessoais <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
 
-            <!-- STEP 3: Client Info Form -->
-            <div id="booking-step-3" class="hidden space-y-4">
-                <button onclick="goToStep(2)" class="text-xs text-brand-pink flex items-center gap-1 hover:underline">
-                    <i class="fa-solid fa-arrow-left"></i> Voltar para horários
+            <!-- STEP 2: Client Info Form -->
+            <div id="booking-step-2" class="hidden space-y-4">
+                <button onclick="goToStep(1)" class="text-xs text-brand-pink flex items-center gap-1 hover:underline">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar para serviços
                 </button>
 
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
@@ -341,14 +314,14 @@
                     </div>
                 </div>
 
-                <button onclick="goToStep(4)" id="btn-to-step4" class="w-full bg-brand-pink text-brand-bg font-bold py-3 rounded-xl hover:bg-brand-pinkLight transition-all flex items-center justify-center gap-2">
-                    Revisar & Gerar Sinal PIX <i class="fa-solid fa-arrow-right"></i>
+                <button onclick="goToStep(3)" id="btn-to-step3" class="w-full bg-brand-pink text-brand-bg font-bold py-3 rounded-xl hover:bg-brand-pinkLight transition-all flex items-center justify-center gap-2">
+                    Revisar & Enviar para o WhatsApp <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
 
-            <!-- STEP 4: Review & Payment Deposit -->
-            <div id="booking-step-4" class="hidden space-y-4">
-                <button onclick="goToStep(3)" class="text-xs text-brand-pink flex items-center gap-1 hover:underline">
+            <!-- STEP 3: Review & WhatsApp Direct Action -->
+            <div id="booking-step-3" class="hidden space-y-4">
+                <button onclick="goToStep(2)" class="text-xs text-brand-pink flex items-center gap-1 hover:underline">
                     <i class="fa-solid fa-arrow-left"></i> Voltar para dados
                 </button>
 
@@ -360,7 +333,6 @@
                     <div class="text-xs space-y-1.5 text-gray-300">
                         <p><strong class="text-gray-400">Cliente:</strong> <span id="summary-name"></span></p>
                         <p><strong class="text-gray-400">WhatsApp:</strong> <span id="summary-phone"></span></p>
-                        <p><strong class="text-gray-400">Data e Horário:</strong> <span id="summary-datetime" class="text-brand-pink font-semibold"></span></p>
                     </div>
 
                     <div class="border-t border-brand-border pt-2 space-y-1">
@@ -378,7 +350,7 @@
                             <span id="summary-deposit-price"></span>
                         </div>
                         <p class="text-[11px] text-gray-400 pt-1">
-                            * O valor restante (70%) será pago diretamente no salão (Aceitamos Dinheiro, Débito, Crédito ou PIX).
+                            * O valor restante (70%) será pago diretamente no salão (Dinheiro, Débito, Crédito ou PIX).
                         </p>
                     </div>
                 </div>
@@ -390,7 +362,7 @@
                         <h4 class="font-bold text-sm text-white">Pagamento do Sinal via PIX</h4>
                     </div>
                     <p class="text-xs text-gray-300">
-                        Para confirmar o horário na agenda, faça o pagamento do sinal de 30% usando a chave abaixo:
+                        Para confirmar o horário, faça o pagamento do sinal de 30% usando a chave abaixo:
                     </p>
 
                     <div class="bg-black/60 p-3 rounded-lg flex items-center justify-between border border-brand-border">
@@ -403,24 +375,17 @@
                             <span id="copy-btn-text">Copiar</span>
                         </button>
                     </div>
-
-                    <div class="bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-lg flex items-start space-x-2">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-xs mt-0.5"></i>
-                        <p class="text-[11px] text-amber-200/90 leading-tight">
-                            Atenção: Tolerância de atraso de 15 minutos no dia marcado.
-                        </p>
-                    </div>
                 </div>
 
                 <!-- Send to WhatsApp Final Action -->
                 <button onclick="confirmAndSendWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 text-sm">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
-                    Enviar Comprovante & Confirmar no WhatsApp
+                    Combinar Horário & Enviar no WhatsApp
                 </button>
             </div>
         </section>
 
-        <!-- 4. CLIENT AREA / MINHA ÁREA -->
+        <!-- 4. CLIENT AREA -->
         <section id="sec-client-area" class="hidden p-4 space-y-4">
             <div class="bg-brand-card p-4 rounded-xl border border-brand-border space-y-4">
                 <div class="flex items-center space-x-3">
@@ -429,28 +394,15 @@
                     </div>
                     <div>
                         <h3 class="font-bold text-white text-base">Sua Área do Cliente</h3>
-                        <p class="text-xs text-gray-400">Acompanhe seus agendamentos ativos</p>
+                        <p class="text-xs text-gray-400">Acompanhe seus agendamentos</p>
                     </div>
                 </div>
 
                 <div class="border-t border-brand-border pt-3">
-                    <h4 class="text-xs font-bold text-brand-pink uppercase tracking-wider mb-2">Próximos Agendamentos</h4>
+                    <h4 class="text-xs font-bold text-brand-pink uppercase tracking-wider mb-2">Últimos Agendamentos</h4>
                     <div id="my-appointments-list" class="space-y-3">
-                        <!-- Rendered via JS -->
+                        <p class="text-xs text-gray-500 text-center py-4">Nenhum agendamento recente registrado neste navegador.</p>
                     </div>
-                </div>
-
-                <!-- Policies Info Box -->
-                <div class="border-t border-brand-border pt-4 space-y-2">
-                    <h4 class="text-xs font-bold text-gray-200 flex items-center gap-1.5">
-                        <i class="fa-solid fa-file-contract text-brand-pink"></i> Políticas do Salão
-                    </h4>
-                    <ul class="text-xs text-gray-400 space-y-1.5 list-disc list-inside">
-                        <li><strong>Tolerância:</strong> Limite máximo de 15 minutos de atraso para não comprometer os próximos atendimentos.</li>
-                        <li><strong>Formas de Pagamento:</strong> Dinheiro, Débito, Crédito e PIX.</li>
-                        <li><strong>Reserva:</strong> Todos os agendamentos exigem pagamento de 30% via PIX para garantia do horário.</li>
-                        <li><strong>Reagendamentos:</strong> Avisar com pelo menos 24h de antecedência.</li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -500,473 +452,233 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // DATA STRUCTURES
         const SERVICES_DATA = [
-            // UNHAS
             { id: 'unha_1', name: 'Pé ou Mão Tradicional', category: 'unhas', price: 35.00, desc: 'Cutilagem e esmaltação simples com acabamento perfeito.', img: 'WhatsApp Image 2026-11-15 at 16.18.11.jpeg' },
             { id: 'unha_2', name: 'Pé e Mão Tradicional', category: 'unhas', price: 55.00, desc: 'Combo completo de cuidados para pés e mãos.', img: 'WhatsApp Image 2026-11-15 at 16.18.11.jpeg' },
             { id: 'unha_3', name: 'Unhas em Gel - Alongamento Aspecto Natural', category: 'unhas', price: 170.00, desc: 'Alongamento em gel com acabamento natural. Incluso cutilagem e esmaltação.', img: 'WhatsApp Image 2026-11-09 at 13.18.46.jpeg' },
             { id: 'unha_4', name: 'Alongamento Decorado', category: 'unhas', price: 190.00, desc: 'Alongamento em gel com nail art/decoração personalizada. Incluso cutilagem.', img: 'WhatsApp Image 2026-11-15 at 16.07.13.jpeg' },
-            { id: 'unha_5', name: 'Manutenção Aspecto Natural', category: 'unhas', price: 120.00, desc: 'Manutenção periódica das unhas em gel. Incluso cutilagem e esmaltação.', img: 'WhatsApp Image 2026-11-15 at 16.16.05,jpeg' },
-            { id: 'unha_6', name: 'Manutenção Decorada', category: 'unhas', price: 140.00, desc: 'Manutenção com renovação de arte e decoração. Incluso cutilagem.', img: 'WhatsApp Image 2026-11-15 at 16.07.13.jpeg' },
-            { id: 'unha_7', name: 'Banho em Gel', category: 'unhas', price: 120.00, desc: 'Camada fortalecedora de gel sobre a unha natural. Incluso cutilagem e esmaltação.', img: 'WhatsApp Image 2026-11-09 at 13.18.46.jpeg' },
-
-            // SOBRANCELHAS
-            { id: 'sob_1', name: 'Sobrancelhas Simples', category: 'sobrancelhas', price: 40.00, desc: 'Design e higienização das sobrancelhas adaptado ao seu formato facial.', img: 'WhatsApp Image 2026-11-09 at 13.18.45.jpeg' },
-            { id: 'sob_2', name: 'Sobrancelhas com Henna', category: 'sobrancelhas', price: 55.00, desc: 'Design personalizado com aplicação de henna para maior preenchimento.', img: 'WhatsApp Image 2026-11-09 at 13.18.45.jpeg' },
-
-            // CABELOS
-            { id: 'cab_1', name: 'Escova Modeladora', category: 'cabelos', price: 65.00, isStartingPrice: true, desc: 'Lavagem especial, secagem e modelagem dos fios.', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' },
-            { id: 'cab_2', name: 'Progressiva', category: 'cabelos', price: 150.00, isStartingPrice: true, desc: 'Alinhamento capilar com brilho intenso e efeito liso duradouro.', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' },
-            { id: 'cab_3', name: 'Botox Capilar', category: 'cabelos', price: 100.00, isStartingPrice: true, desc: 'Reconstrução e redução de volume com emoliência profunda.', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' },
-            { id: 'cab_4', name: 'Coloração Global (Tinta do Salão)', category: 'cabelos', price: 80.00, isStartingPrice: true, desc: 'Aplicação de tintura profissional do acervo do salão.', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' },
-            { id: 'cab_5', name: 'Coloração Global (Tinta da Cliente)', category: 'cabelos', price: 50.00, isStartingPrice: true, desc: 'Aplicação técnica com a tintura trazida pela cliente.', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' },
-            { id: 'cab_6', name: 'Cronograma Capilar', category: 'cabelos', price: 200.00, isStartingPrice: true, desc: 'Tratamento intensivo de Nutrição, Hidratação e Reconstrução.', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' }
+            { id: 'unha_5', name: 'Manutenção Aspecto Natural', category: 'unhas', price: 90.00, desc: 'Manutenção periódica de unhas em gel.', img: 'WhatsApp Image 2026-11-15 at 16.16.05.jpeg' },
+            { id: 'sobrancelha_1', name: 'Design de Sobrancelhas', category: 'sobrancelhas', price: 35.00, desc: 'Design personalizado para harmonização do olhar.', img: 'WhatsApp Image 2026-11-09 at 13.18.45.jpeg' },
+            { id: 'sobrancelha_2', name: 'Design com Henna', category: 'sobrancelhas', price: 50.00, desc: 'Design completo com coloração em henna.', img: 'WhatsApp Image 2026-11-09 at 13.18.45.jpeg' },
+            { id: 'cabelo_1', name: 'Hidratação & Escova', category: 'cabelos', price: 80.00, desc: 'Tratamento capilar profundo com escova modelada.', img: 'WhatsApp Image 2026-11-09 at 13.18.46 (1).jpeg' },
+            { id: 'cabelo_2', name: 'Corte Bordado & Tratamento', category: 'cabelos', price: 120.00, desc: 'Remoção de pontas duplas sem perder comprimento.', img: 'WhatsApp Image 2026-11-09 at 13.18.46 (1).jpeg' }
         ];
 
-        // GALLERY FEED DATA (Instagram Grid)
         const GALLERY_ITEMS = [
-            { id: 'unha_3', title: 'Unhas em Gel Natural', cat: 'Mãos & Pés', price: 'R$ 170,00', img: 'WhatsApp Image 2026-11-09 at 13.18.46 (2).jpeg' },
-            { id: 'sob_2', title: 'Design Henna Perfeita', cat: 'Sobrancelhas', price: 'R$ 55,00', img: 'WhatsApp Image 2026-11-09 at 13.18.45.jpeg' },
-            { id: 'cab_2', title: 'Progressiva Efeito Espelho', cat: 'Cabelos', price: 'A partir de R$ 150,00', img: 'WhatsApp Image 2026-11-09 at 13.18.46 (1).jpeg' },
-            { id: 'unha_4', title: 'Nail Art Decorada', cat: 'Mãos & Pés', price: 'R$ 190,00', img: 'WhatsApp Image 2026-11-15 at 16.07.13.jpeg' },
-            { id: 'cab_6', title: 'Cronograma Capilar Deep', cat: 'Cabelos', price: 'A partir de R$ 200,00', img: 'WhatsApp Image 2026-11-09 at 13.18.44.jpeg' },
-            { id: 'unha_7', title: 'Banho em Gel Brilho', cat: 'Mãos & Pés', price: 'R$ 120,00', img: 'WhatsApp Image 2026-11-09 at 13.18.46.jpeg' }
+            { title: 'Gel Natural', category: 'Unhas', price: 'R$ 170,00', img: 'WhatsApp Image 2026-11-15 at 16.16.05.jpeg', desc: 'Alongamento em gel super natural.' },
+            { title: 'Nail Art Decorada', category: 'Unhas', price: 'R$ 190,00', img: 'WhatsApp Image 2026-11-15 at 16.07.13.jpeg', desc: 'Unhas decoradas exclusivas.' },
+            { title: 'Design com Henna', category: 'Sobrancelhas', price: 'R$ 50,00', img: 'WhatsApp Image 2026-11-09 at 13.18.45.jpeg', desc: 'Definição e preenchimento perfeito.' },
+            { title: 'Tratamento Capilar', category: 'Cabelos', price: 'R$ 80,00', img: 'WhatsApp Image 2026-11-09 at 13.18.46 (1).jpeg', desc: 'Brilho e maciez imediata.' },
+            { title: 'Pé e Mão', category: 'Unhas', price: 'R$ 55,00', img: 'WhatsApp Image 2026-11-15 at 16.18.11.jpeg', desc: 'Cuidados tradicionais.' },
+            { title: 'Manutenção em Gel', category: 'Unhas', price: 'R$ 90,00', img: 'WhatsApp Image 2026-11-15 at 16.16.05.jpeg', desc: 'Manutenção impecável.' }
         ];
 
-        // STATE APP MANAGEMENT
-        let state = {
-            activeTab: 'feed',
-            selectedServiceIds: [],
-            selectedDate: '',
-            selectedSlot: '',
-            clientInfo: { name: '', phone: '', notes: '' },
-            myAppointments: JSON.parse(localStorage.getItem('duda_appointments') || '[]')
-        };
+        let selectedServiceIds = [];
 
-        // INITIALIZATION
-        window.addEventListener('DOMContentLoaded', () => {
-            renderFeedGrid();
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery();
             renderServicesList('todos');
-            renderBookingServicesList();
-            renderMyAppointments();
-            setupMinDate();
+            renderBookingServices();
         });
 
-        // NAVIGATION TABS SWITCHER
         function switchTab(tabName) {
-            state.activeTab = tabName;
-            
-            const tabs = ['feed', 'services', 'booking', 'client-area'];
-            tabs.forEach(t => {
-                const sec = document.getElementById(`sec-${t}`);
+            ['feed', 'services', 'booking', 'client-area'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
                 const btn = document.getElementById(`tab-btn-${t}`);
-                if (t === tabName) {
-                    sec.classList.remove('hidden');
-                    if (btn) {
-                        btn.classList.add('active-tab');
-                        btn.classList.remove('border-transparent', 'text-gray-400');
-                    }
-                } else {
-                    sec.classList.add('hidden');
-                    if (btn) {
-                        btn.classList.remove('active-tab');
-                        btn.classList.add('border-transparent', 'text-gray-400');
-                    }
-                }
+                if(btn) btn.classList.remove('active-tab', 'text-brand-pink');
+                if(btn) btn.classList.add('text-gray-400', 'border-transparent');
             });
 
+            document.getElementById(`sec-${tabName}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            if(activeBtn) {
+                activeBtn.classList.add('active-tab', 'text-brand-pink');
+                activeBtn.classList.remove('text-gray-400', 'border-transparent');
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // RENDER INSTAGRAM FEED GRID
-        function renderFeedGrid() {
+        function renderGallery() {
             const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = GALLERY_ITEMS.map(item => `
-                <div class="relative group aspect-square bg-brand-card overflow-hidden cursor-pointer rounded-md" onclick="openGalleryModal('${item.id}')">
-                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-2 text-xs">
-                        <span class="font-bold text-white truncate">${item.title}</span>
-                        <span class="text-brand-pink font-semibold text-[10px]">${item.price}</span>
+            grid.innerHTML = GALLERY_ITEMS.map((item, index) => `
+                <div class="aspect-square bg-brand-card relative group cursor-pointer overflow-hidden rounded-md" onclick="openStoryModalFromGallery(${index})">
+                    <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${item.title}">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white gap-3 text-xs font-bold">
+                        <span><i class="fa-solid fa-heart"></i></span>
+                        <span>${item.title}</span>
                     </div>
                 </div>
             `).join('');
         }
 
-        // RENDER SERVICES SECTION
         function renderServicesList(catFilter) {
             const container = document.getElementById('services-container');
-            const filtered = catFilter === 'todos' 
-                ? SERVICES_DATA 
-                : SERVICES_DATA.filter(s => s.category === catFilter);
-
+            const filtered = catFilter === 'todos' ? SERVICES_DATA : SERVICES_DATA.filter(s => s.category === catFilter);
+            
             container.innerHTML = filtered.map(s => `
-                <div class="bg-brand-card border border-brand-border rounded-xl p-3 flex space-x-3 items-center hover:border-brand-pink/50 transition-all">
-                    <img src="${s.img}" alt="${s.name}" class="w-20 h-20 rounded-lg object-cover flex-shrink-0">
+                <div class="bg-brand-card p-3.5 rounded-xl border border-brand-border flex items-center justify-between gap-3">
+                    <img src="${s.img}" class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
                     <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-sm text-white truncate">${s.name}</h4>
-                        <p class="text-xs text-gray-400 line-clamp-2 mt-0.5">${s.desc}</p>
-                        <div class="flex items-center justify-between mt-2">
-                            <span class="text-sm font-bold text-brand-pink">
-                                ${s.isStartingPrice ? 'a partir de ' : ''}R$ ${s.price.toFixed(2).replace('.', ',')}
-                            </span>
-                            <button onclick="selectAndBook('${s.id}')" class="bg-brand-pink/15 hover:bg-brand-pink/30 text-brand-pink border border-brand-pink/30 px-3 py-1 rounded-lg text-xs font-semibold transition-all">
-                                Agendar
-                            </button>
-                        </div>
+                        <h4 class="font-bold text-white text-sm truncate">${s.name}</h4>
+                        <p class="text-xs text-gray-400 line-clamp-1">${s.desc}</p>
+                        <span class="text-brand-pink font-bold text-xs mt-1 block">R$ ${s.price.toFixed(2).replace('.', ',')}</span>
                     </div>
+                    <button onclick="selectServiceAndGo('${s.id}')" class="bg-brand-pink/20 hover:bg-brand-pink text-brand-pink hover:text-brand-bg border border-brand-pink/30 p-2 rounded-xl text-xs font-bold transition-all flex-shrink-0">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
             `).join('');
         }
 
         function filterServices(category) {
-            // Update UI buttons styling
-            const buttons = document.querySelectorAll('#category-filters button');
-            buttons.forEach(btn => {
-                if(btn.textContent.toLowerCase().includes(category) || (category === 'todos' && btn.textContent === 'Todos')) {
-                    btn.className = 'cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-pink text-brand-bg whitespace-nowrap';
-                } else {
-                    btn.className = 'cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-card border border-brand-border text-gray-300 hover:border-brand-pink whitespace-nowrap';
-                }
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-pink', 'text-brand-bg');
+                btn.classList.add('bg-brand-card', 'border', 'border-brand-border', 'text-gray-300');
             });
+            event.target.classList.remove('bg-brand-card', 'border', 'border-brand-border', 'text-gray-300');
+            event.target.classList.add('bg-brand-pink', 'text-brand-bg');
             renderServicesList(category);
         }
 
-        // BOOKING FLOW LOGIC
-        function renderBookingServicesList() {
+        function renderBookingServices() {
             const list = document.getElementById('booking-services-list');
             list.innerHTML = SERVICES_DATA.map(s => `
-                <label class="flex items-center justify-between p-3 rounded-xl border bg-brand-card cursor-pointer transition-all ${state.selectedServiceIds.includes(s.id) ? 'border-brand-pink bg-brand-pink/10' : 'border-brand-border hover:border-gray-700'}">
+                <label class="bg-brand-card p-3 rounded-xl border border-brand-border flex items-center justify-between cursor-pointer hover:border-brand-pink/50 transition-all">
                     <div class="flex items-center space-x-3">
-                        <input type="checkbox" value="${s.id}" ${state.selectedServiceIds.includes(s.id) ? 'checked' : ''} onchange="toggleServiceSelection('${s.id}')" class="w-4 h-4 accent-brand-pink rounded">
+                        <input type="checkbox" value="${s.id}" onchange="toggleBookingService('${s.id}')" class="w-4 h-4 accent-brand-pink rounded">
                         <div>
-                            <span class="text-xs font-bold text-white block">${s.name}</span>
-                            <span class="text-[11px] text-gray-400">${s.desc}</span>
+                            <span class="font-semibold text-white text-sm block">${s.name}</span>
+                            <span class="text-xs text-brand-pink">R$ ${s.price.toFixed(2).replace('.', ',')}</span>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-brand-pink ml-2 whitespace-nowrap">
-                        ${s.isStartingPrice ? 'a partir ' : ''}R$ ${s.price.toFixed(2).replace('.', ',')}
-                    </span>
+                    <img src="${s.img}" class="w-12 h-12 rounded-lg object-cover">
                 </label>
             `).join('');
         }
 
-        function toggleServiceSelection(id) {
-            if (state.selectedServiceIds.includes(id)) {
-                state.selectedServiceIds = state.selectedServiceIds.filter(item => item !== id);
+        function toggleBookingService(id) {
+            if(selectedServiceIds.includes(id)) {
+                selectedServiceIds = selectedServiceIds.filter(i => i !== id);
             } else {
-                state.selectedServiceIds.push(id);
+                selectedServiceIds.push(id);
             }
-            renderBookingServicesList();
-            
             const btn = document.getElementById('btn-to-step2');
-            if (state.selectedServiceIds.length > 0) {
-                btn.disabled = false;
+            if(selectedServiceIds.length > 0) {
+                btn.removeAttribute('disabled');
                 btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                btn.classList.add('hover:bg-brand-pinkLight');
             } else {
-                btn.disabled = true;
+                btn.setAttribute('disabled', 'true');
                 btn.classList.add('opacity-50', 'cursor-not-allowed');
-                btn.classList.remove('hover:bg-brand-pinkLight');
             }
         }
 
-        function selectAndBook(serviceId) {
-            state.selectedServiceIds = [serviceId];
-            renderBookingServicesList();
-            toggleServiceSelection(serviceId); // triggers state verification
+        function selectServiceAndGo(id) {
+            selectedServiceIds = [id];
             switchTab('booking');
-            goToStep(1);
-        }
-
-        function setupMinDate() {
-            const dateInput = document.getElementById('booking-date');
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            dateInput.min = `${year}-${month}-${day}`;
-        }
-
-        function onDateChange() {
-            const dateInput = document.getElementById('booking-date');
-            const val = dateInput.value;
-            if(!val) return;
-
-            const selectedDate = new Date(val + 'T00:00:00');
-            const dayOfWeek = selectedDate.getDay(); // 0 = Dom, 1 = Seg, 2 = Ter, 3 = Qua, 4 = Qui, 5 = Sex, 6 = Sab
-
-            const grid = document.getElementById('slots-grid');
-            state.selectedDate = val;
-            state.selectedSlot = '';
-            document.getElementById('btn-to-step3').disabled = true;
-            document.getElementById('btn-to-step3').classList.add('opacity-50', 'cursor-not-allowed');
-
-            // Quarta (3) a Sexta (5): 08:00 as 18:00
-            // Sábado (6): 07:00 as 16:00
-            // Domingo (0), Segunda (1), Terça (2): Fechado
-
-            if (dayOfWeek === 0 || dayOfWeek === 1 || dayOfWeek === 2) {
-                grid.innerHTML = `
-                    <div class="col-span-3 bg-red-500/10 border border-red-500/20 p-3 rounded-lg text-center text-xs text-red-300">
-                        <i class="fa-solid fa-circle-xmark text-sm mb-1 block"></i>
-                        O salão não abre aos Domingos, Segundas e Terças. Por favor escolha de Quarta a Sábado.
-                    </div>
-                `;
-                return;
-            }
-
-            let startHour = 8;
-            let endHour = 18;
-
-            if (dayOfWeek === 6) { // Sábado
-                startHour = 7;
-                endHour = 16;
-            }
-
-            let slotsHtml = '';
-
-            for (let hour = startHour; hour < endHour; hour++) {
-                // Almoço obrigatório de 12:00 as 13:00
-                if (hour === 12) {
-                    continue; 
-                }
-
-                const slotTime = `${String(hour).padStart(2, '0')}:00`;
-                slotsHtml += `
-                    <button onclick="selectTimeSlot('${slotTime}', this)" class="slot-btn py-2 px-3 rounded-lg border border-brand-border bg-brand-card text-xs text-gray-200 hover:border-brand-pink transition-all">
-                        ${slotTime}
-                    </button>
-                `;
-            }
-
-            grid.innerHTML = slotsHtml;
-        }
-
-        function selectTimeSlot(slot, element) {
-            state.selectedSlot = slot;
-            document.querySelectorAll('.slot-btn').forEach(b => {
-                b.classList.remove('bg-brand-pink', 'text-brand-bg', 'font-bold', 'border-brand-pink');
-                b.classList.add('bg-brand-card', 'text-gray-200');
+            goToStep(2);
+            // Marcar checkbox correspondente
+            document.querySelectorAll('#booking-services-list input').forEach(inp => {
+                if(inp.value === id) inp.checked = true;
             });
-            element.classList.remove('bg-brand-card', 'text-gray-200');
-            element.classList.add('bg-brand-pink', 'text-brand-bg', 'font-bold', 'border-brand-pink');
-
-            const btn = document.getElementById('btn-to-step3');
-            btn.disabled = false;
-            btn.classList.remove('opacity-50', 'cursor-not-allowed');
-            btn.classList.add('hover:bg-brand-pinkLight');
         }
 
-        function goToStep(stepNum) {
-            for(let i = 1; i <= 4; i++) {
-                document.getElementById(`booking-step-${i}`).classList.add('hidden');
+        function goToStep(step) {
+            [1, 2, 3].forEach(s => {
+                document.getElementById(`booking-step-${s}`).classList.add('hidden');
+            });
+            document.getElementById(`booking-step-${step}`).classList.remove('hidden');
+
+            const indicators = {
+                1: { text: "Passo 1 de 3", title: "Escolha os Serviços", width: "33%" },
+                2: { text: "Passo 2 de 3", title: "Dados de Contato", width: "66%" },
+                3: { text: "Passo 3 de 3", title: "Resumo & WhatsApp", width: "100%" }
+            };
+
+            document.getElementById('step-indicator').innerText = indicators[step].text;
+            document.getElementById('step-title').innerText = indicators[step].title;
+            document.getElementById('step-bar').style.width = indicators[step].width;
+
+            if(step === 3) {
+                updateSummary();
             }
-            document.getElementById(`booking-step-${stepNum}`).classList.remove('hidden');
-
-            const stepBar = document.getElementById('step-bar');
-            const stepIndicator = document.getElementById('step-indicator');
-            const stepTitle = document.getElementById('step-title');
-
-            stepIndicator.textContent = `Passo ${stepNum} de 4`;
-
-            if(stepNum === 1) {
-                stepBar.style.width = '25%';
-                stepTitle.textContent = 'Escolha os Serviços';
-            } else if(stepNum === 2) {
-                stepBar.style.width = '50%';
-                stepTitle.textContent = 'Data e Horário';
-            } else if(stepNum === 3) {
-                stepBar.style.width = '75%';
-                stepTitle.textContent = 'Seus Dados';
-            } else if(stepNum === 4) {
-                stepBar.style.width = '100%';
-                stepTitle.textContent = 'Revisão & Sinal PIX';
-                prepareStep4Summary();
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function prepareStep4Summary() {
-            state.clientInfo.name = document.getElementById('client-name').value.trim();
-            state.clientInfo.phone = document.getElementById('client-phone').value.trim();
-            state.clientInfo.notes = document.getElementById('client-notes').value.trim();
+        function updateSummary() {
+            const name = document.getElementById('client-name').value || 'Não informado';
+            const phone = document.getElementById('client-phone').value || 'Não informado';
 
-            if (!state.clientInfo.name || !state.clientInfo.phone) {
-                alert('Por favor preencha seu nome e telefone antes de prosseguir.');
-                goToStep(3);
-                return;
-            }
+            document.getElementById('summary-name').innerText = name;
+            document.getElementById('summary-phone').innerText = phone;
 
-            document.getElementById('summary-name').textContent = state.clientInfo.name;
-            document.getElementById('summary-phone').textContent = state.clientInfo.phone;
-            
-            // Format Date (YYYY-MM-DD to DD/MM/YYYY)
-            const [y, m, d] = state.selectedDate.split('-');
-            document.getElementById('summary-datetime').textContent = `${d}/${m}/${y} às ${state.selectedSlot}h`;
-
-            // Selected Services
-            const selectedObjs = SERVICES_DATA.filter(s => state.selectedServiceIds.includes(s.id));
-            const servicesContainer = document.getElementById('summary-services-list');
-            
             let total = 0;
-            servicesContainer.innerHTML = selectedObjs.map(s => {
-                total += s.price;
-                return `
-                    <div class="flex justify-between text-gray-300">
-                        <span>• ${s.name}</span>
-                        <span class="font-semibold">R$ ${s.price.toFixed(2).replace('.', ',')}</span>
-                    </div>
-                `;
-            }).join('');
+            let listHtml = '';
+            selectedServiceIds.forEach(id => {
+                const s = SERVICES_DATA.find(x => x.id === id);
+                if(s) {
+                    total += s.price;
+                    listHtml += `<div class="flex justify-between text-gray-300"><span>• ${s.name}</span><span>R$ ${s.price.toFixed(2).replace('.', ',')}</span></div>`;
+                }
+            });
 
-            const deposit = total * 0.30;
-
-            document.getElementById('summary-total-price').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-            document.getElementById('summary-deposit-price').textContent = `R$ ${deposit.toFixed(2).replace('.', ',')}`;
+            document.getElementById('summary-services-list').innerHTML = listHtml;
+            document.getElementById('summary-total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            const deposit = total * 0.3;
+            document.getElementById('summary-deposit-price').innerText = `R$ ${deposit.toFixed(2).replace('.', ',')}`;
         }
 
         function copyPixKey() {
-            const pixKey = "31995289392";
-            
-            // Clipboard fallback
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(pixKey);
-            } else {
-                const textarea = document.createElement('textarea');
-                textarea.value = pixKey;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            }
-
+            navigator.clipboard.writeText('31995289392');
             const btnText = document.getElementById('copy-btn-text');
-            btnText.textContent = "Copiado!";
-            setTimeout(() => {
-                btnText.textContent = "Copiar";
-            }, 2000);
+            btnText.innerText = 'Copiado!';
+            setTimeout(() => { btnText.innerText = 'Copiar'; }, 2000);
         }
 
         function confirmAndSendWhatsApp() {
-            const selectedObjs = SERVICES_DATA.filter(s => state.selectedServiceIds.includes(s.id));
-            let total = 0;
-            const servicesListText = selectedObjs.map(s => {
-                total += s.price;
-                return ` - ${s.name} (R$ ${s.price.toFixed(2).replace('.', ',')})`;
-            }).join('%0A');
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const notes = document.getElementById('client-notes').value;
 
-            const deposit = total * 0.30;
-            const [y, m, d] = state.selectedDate.split('-');
-            const dateFormatted = `${d}/${m}/${y}`;
-
-            // Save to LocalStorage
-            const newAppointment = {
-                id: Date.now(),
-                date: dateFormatted,
-                slot: state.selectedSlot,
-                services: selectedObjs.map(s => s.name),
-                total: total,
-                deposit: deposit,
-                status: 'Aguardando Comprovante'
-            };
-
-            state.myAppointments.unshift(newAppointment);
-            localStorage.setItem('duda_appointments', JSON.stringify(state.myAppointments));
-            renderMyAppointments();
-
-            // WhatsApp Message
-            const msg = `Olá, Duda Beauty Studio! Gostaria de confirmar meu agendamento:%0A%0A` +
-                `👤 *Nome:* ${state.clientInfo.name}%0A` +
-                `📞 *WhatsApp:* ${state.clientInfo.phone}%0A` +
-                `📅 *Data:* ${dateFormatted}%0A` +
-                `⏰ *Horário:* ${state.selectedSlot}h%0A%0A` +
-                `💅 *Serviços:*%0A${servicesListText}%0A%0A` +
-                `💰 *Valor Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A` +
-                `💳 *Sinal (30% PIX):* R$ ${deposit.toFixed(2).replace('.', ',')}%0A` +
-                `${state.clientInfo.notes ? `📝 *Obs:* ${state.clientInfo.notes}%0A` : ''}%0A` +
-                `Estou enviando o comprovante do PIX em anexo.`;
-
-            window.open(`https://wa.me/5531995289392?text=${msg}`, '_blank');
-
-            // Switch to Client Area
-            switchTab('client-area');
-        }
-
-        // CLIENT AREA RENDER
-        function renderMyAppointments() {
-            const container = document.getElementById('my-appointments-list');
-            const badge = document.getElementById('client-badge');
-
-            if (state.myAppointments.length === 0) {
-                badge.classList.add('hidden');
-                container.innerHTML = `
-                    <p class="text-xs text-gray-500 py-3 text-center">Você ainda não possui agendamentos cadastrados neste dispositivo.</p>
-                `;
+            if(!name || !phone) {
+                alert('Por favor, preencha seu Nome e WhatsApp antes de continuar.');
+                goToStep(2);
                 return;
             }
 
-            badge.classList.remove('hidden');
+            let servicesText = '';
+            let total = 0;
+            selectedServiceIds.forEach(id => {
+                const s = SERVICES_DATA.find(x => x.id === id);
+                if(s) {
+                    servicesText += `- ${s.name} (R$ ${s.price.toFixed(2).replace('.', ',')})\n`;
+                    total += s.price;
+                }
+            });
 
-            container.innerHTML = state.myAppointments.map(app => `
-                <div class="bg-brand-bg border border-brand-border p-3 rounded-xl space-y-2">
-                    <div class="flex justify-between items-center border-b border-brand-border/60 pb-2">
-                        <span class="text-xs font-bold text-brand-pink flex items-center gap-1">
-                            <i class="fa-regular fa-calendar-check"></i> ${app.date} às ${app.slot}h
-                        </span>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-semibold">
-                            ${app.status}
-                        </span>
-                    </div>
-                    <div class="text-xs text-gray-300 space-y-0.5">
-                        <p class="font-semibold text-white">${app.services.join(', ')}</p>
-                        <p class="text-[11px] text-gray-400">Total: R$ ${app.total.toFixed(2).replace('.', ',')} | Sinal (30%): R$ ${app.deposit.toFixed(2).replace('.', ',')}</p>
-                    </div>
-                    <div class="pt-1 flex justify-end">
-                        <a href="https://wa.me/5531995289392?text=Olá!%20Gostaria%20de%20falar%20sobre%20meu%20agendamento%20do%20dia%20${app.date}%20às%20${app.slot}h" target="_blank" class="text-[11px] text-emerald-400 hover:underline flex items-center gap-1">
-                            <i class="fa-brands fa-whatsapp"></i> Falar sobre este agendamento
-                        </a>
-                    </div>
-                </div>
-            `).join('');
+            const deposit = (total * 0.3).toFixed(2).replace('.', ',');
+            const formattedTotal = total.toFixed(2).replace('.', ',');
+
+            const msg = `Olá, Duda! Vim pelo site e gostaria de agendar um horário.%0A%0A*Cliente:* ${encodeURIComponent(name)}%0A*WhatsApp:* ${encodeURIComponent(phone)}%0A%0A*Serviços Escolhidos:*%0A${encodeURIComponent(servicesText)}%0A*Valor Total:* R$ ${formattedTotal}%0A*Sinal (30%):* R$ ${deposit}%0A*Observações:* ${encodeURIComponent(notes || 'Nenhuma')}%0A%0AEstou enviando o comprovante do sinal via PIX para confirmar a vaga!`;
+
+            window.open(`https://wa.me/5531995289392?text=${msg}`, '_blank');
         }
 
-        // MODAL LIGHTBOX
-        function openGalleryModal(serviceId) {
-            const item = SERVICES_DATA.find(s => s.id === serviceId);
-            if (!item) return;
-
-            document.getElementById('modal-img').src = item.img;
-            document.getElementById('modal-title').textContent = item.name;
-            document.getElementById('modal-category').textContent = item.category.toUpperCase();
-            document.getElementById('modal-desc').textContent = item.desc;
-            document.getElementById('modal-price').textContent = `${item.isStartingPrice ? 'a partir ' : ''}R$ ${item.price.toFixed(2).replace('.', ',')}`;
-
-            const btn = document.getElementById('modal-btn-book');
-            btn.onclick = () => {
-                closeModal();
-                selectAndBook(item.id);
-            };
-
+        function openStoryModal(title, img) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = "Duda Beauty Studio";
+            document.getElementById('modal-desc').innerText = "Trabalho realizado com excelência e produtos de alta qualidade.";
+            document.getElementById('modal-price').innerText = "Sob consulta";
+            document.getElementById('modal-img').src = img || 'Gemini_Generated_Image_nkq2h9nkq2h9nkq2.jpeg';
             document.getElementById('modal-lightbox').classList.remove('hidden');
         }
 
-        function openStoryModal(title, imgUrl) {
-            if(!imgUrl) {
-                alert("Políticas do Salão:\n- Atendimento com até 15 minutos de tolerância.\n- Agendamento mediante 30% do sinal via PIX.\n- Pagamentos aceitos: Dinheiro, Débito, Crédito e PIX.");
-                return;
-            }
-            document.getElementById('modal-img').src = imgUrl;
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-category').textContent = "DESTAQUES DUDA BEAUTY";
-            document.getElementById('modal-desc').textContent = "Confira nossos últimos trabalhos com excelência e cuidado com cada cliente.";
-            document.getElementById('modal-price').textContent = "Confira os preços na aba Serviços";
-
-            const btn = document.getElementById('modal-btn-book');
-            btn.onclick = () => {
-                closeModal();
-                switchTab('booking');
-            };
-
+        function openStoryModalFromGallery(index) {
+            const item = GALLERY_ITEMS[index];
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-category').innerText = item.category;
+            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('modal-price').innerText = item.price;
+            document.getElementById('modal-img').src = item.img;
             document.getElementById('modal-lightbox').classList.remove('hidden');
         }
 
